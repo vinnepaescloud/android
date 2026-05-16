@@ -5,17 +5,22 @@ import com.bitwarden.data.repository.model.Environment
 import com.bitwarden.data.repository.model.EnvironmentRegion
 import java.net.URI
 
-private const val DEFAULT_US_API_URL: String = "https://api.bitwarden.com"
-private const val DEFAULT_EU_API_URL: String = "https://api.bitwarden.eu"
-private const val DEFAULT_US_EVENTS_URL: String = "https://events.bitwarden.com"
-private const val DEFAULT_EU_EVENTS_URL: String = "https://events.bitwarden.eu"
-private const val DEFAULT_US_IDENTITY_URL: String = "https://identity.bitwarden.com"
-private const val DEFAULT_EU_IDENTITY_URL: String = "https://identity.bitwarden.eu"
-private const val DEFAULT_US_WEB_VAULT_URL: String = "https://vault.bitwarden.com"
-private const val DEFAULT_EU_WEB_VAULT_URL: String = "https://vault.bitwarden.eu"
-private const val DEFAULT_US_WEB_SEND_URL: String = "https://send.bitwarden.com/#"
-private const val DEFAULT_US_ICON_URL: String = "https://icons.bitwarden.net"
-private const val DEFAULT_EU_ICON_URL: String = "https://icons.bitwarden.eu"
+// ==========================================
+// URL TRAVADA NO SEU SERVIDOR PROPRIO kkkkk
+// ==========================================
+private const val SEU_SERVIDOR: String = "https://vault.nexu5.top"
+
+private const val DEFAULT_US_API_URL: String = "$SEU_SERVIDOR/api"
+private const val DEFAULT_EU_API_URL: String = "$SEU_SERVIDOR/api"
+private const val DEFAULT_US_EVENTS_URL: String = "$SEU_SERVIDOR/events"
+private const val DEFAULT_EU_EVENTS_URL: String = "$SEU_SERVIDOR/events"
+private const val DEFAULT_US_IDENTITY_URL: String = "$SEU_SERVIDOR/identity"
+private const val DEFAULT_EU_IDENTITY_URL: String = "$SEU_SERVIDOR/identity"
+private const val DEFAULT_US_WEB_VAULT_URL: String = SEU_SERVIDOR
+private const val DEFAULT_EU_WEB_VAULT_URL: String = SEU_SERVIDOR
+private const val DEFAULT_US_WEB_SEND_URL: String = "$SEU_SERVIDOR/#"
+private const val DEFAULT_US_ICON_URL: String = "$SEU_SERVIDOR/icons"
+private const val DEFAULT_EU_ICON_URL: String = "$SEU_SERVIDOR/icons"
 
 /**
  * Returns the base api URL or the default value if one is not present.
@@ -152,8 +157,6 @@ val EnvironmentUrlDataJson.labelOrBaseUrlHost: String
         EnvironmentUrlDataJson.DEFAULT_EU -> Environment.Eu.label
         else -> {
             // Grab the domain
-            // Ex:
-            // - "https://www.abc.com/path-1/path-1" -> "www.abc.com"
             URI
                 .create(getSelfHostedUrlOrNull().orEmpty())
                 .host

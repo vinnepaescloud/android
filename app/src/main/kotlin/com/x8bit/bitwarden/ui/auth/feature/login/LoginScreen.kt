@@ -273,33 +273,9 @@ private fun LoginScreenContent(
                 .fillMaxWidth(),
         )
 
-        Spacer(modifier = Modifier.height(24.dp))
-
-        Text(
-            text = stringResource(
-                id = BitwardenString.logging_in_as_x_on_y,
-                state.emailAddress,
-                state.environmentLabel,
-            ),
-            textAlign = TextAlign.Center,
-            style = BitwardenTheme.typography.bodySmall,
-            color = BitwardenTheme.colorScheme.text.secondary,
-            modifier = Modifier
-                .testTag("LoggingInAsLabel")
-                .standardHorizontalMargin()
-                .fillMaxWidth(),
-        )
-
-        BitwardenClickableText(
-            label = stringResource(id = BitwardenString.not_you),
-            onClick = onNotYouButtonClick,
-            style = BitwardenTheme.typography.labelMedium,
-            innerPadding = PaddingValues(vertical = 8.dp, horizontal = 16.dp),
-            modifier = Modifier
-                .standardHorizontalMargin()
-                .align(alignment = Alignment.CenterHorizontally)
-                .testTag("NotYouLabel"),
-        )
+        // ==========================================
+        // SELETOR E LABEL REMOVIDOS PARA LIMPAR A TELA
+        // ==========================================
         Spacer(modifier = Modifier.height(height = 16.dp))
         Spacer(modifier = Modifier.navigationBarsPadding())
     }
